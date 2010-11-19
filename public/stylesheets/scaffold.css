@@ -16,7 +16,7 @@ body{ background:url("/images/bg.png") repeat scroll 0 0 #DDD;color:#222;font-fa
 .button {color: #333 !important; background: #e5e5e5; padding: 7px 20px; font-weight: bold; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; }    
 table { margin: 0px 10px 10px 10px;}
 
-.options { margin: 10px; }
+.options { margin: 10px; clear:both;}
 .options ul.rater { min-width: 260px; clear: both; cursor: pointer; float: left; width:auto;margin:0; padding:0; padding: 10px 20px; background: #fbfbfb; margin-bottom: 5px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; } 
 .options ul.rater, ul.rater li { list-style-type: none; cursor: pointer; }
 .options ul.rater li.dot { float: left; background: url('../images/dot_grey.png') no-repeat; height: 12px; width: 13px; margin-right: 5px; text-indent: -7777px;}
@@ -28,5 +28,8 @@ table { margin: 0px 10px 10px 10px;}
 .options ul.rater li.chosen.negative{color: #f41414 !important;}
 .options ul.rater li.category { color: #ccc; float: left; margin-left: 12px; font-size: 1.3em; font-weight: bold;}
 
-form .field{display:none;}
-form .actions { clear: both; margin-left: 160px; }
+form#new_day .field{display:none;}
+form#new_day .actions { clear: both; margin-left: 160px; }
+
+.options #optionsDate { font-size:1.4em; color: #bbb;  min-width: 260px; clear: both; cursor: pointer; float: left; width:auto;margin:0; padding:0; padding: 10px 20px; background: #fbfbfb; margin-bottom: 5px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; } 
+#error_explanation { float: left; clear: both; }

@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20101117135837) do
     t.string   "field4"
     t.string   "field5"
     t.string   "field6"
+    t.string   "comment"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

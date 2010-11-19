@@ -39,42 +39,46 @@ $(document).ready(function() {
 		
 	})
 });
-
 </script>	
-
-<div class="options">
-	<ul class="rater" updates="day_field1">
-		<li class="dot neg">-3</li>
-		<li class="dot neg">-2</li>
-		<li class="dot neg">-1</li>
-		<li class="dot zero">0</li>
-		<li class="dot pos">+1</li>
-		<li class="dot pos">+2</li>
-		<li class="dot pos">+3</li>
-		<li class="chosen">-</li>
-		<li class="category">MOOD</li>
-	</ul>
-	
-	<ul class="rater" updates="day_field2">
-		<li class="dot neg">-3</li>
-		<li class="dot neg">-2</li>
-		<li class="dot neg">-1</li>
-		<li class="dot zero">0</li>
-		<li class="dot pos">+1</li>
-		<li class="dot pos">+2</li>
-		<li class="dot pos">+3</li>
-		<li class="chosen">-</li>
-		<li class="category">HAPPYNESS</li>
-	</ul>	
-</div>
-
-<br/><br/><br/><br/><br/><br/><br/>
-<!--%= render 'form' %-->
 
 <%= form_for @day do |f| %>
 
+	<% if @day.errors.any? %>
+	   	<% @day.errors.full_messages.each do |msg| %>
+	     	<div><%= msg %></div>
+		<% end %>
+	<% end %>
+
+	<div class="options">
+
+		<% @fields = Field.all %>
+		<% @lastEntry = Day.last   %>              
+	    <% @lastDay = Day.find(@lastEntry.id) %>
+
+		<div id="optionsDate"><%= Time.now.strftime("%Y-%m-%d") %></div>
+	
+		<% @fields.each_with_index do |field,i| %>
+	
+			<ul class="rater" updates='<%= "day_field#{i+1}" %>'>
+				<li class="dot neg">-3</li>
+				<li class="dot neg">-2</li>
+				<li class="dot neg">-1</li>
+				<li class="dot zero">0</li>
+				<li class="dot pos">+1</li>
+				<li class="dot pos">+2</li>
+				<li class="dot pos">+3</li>
+				<li class="chosen">-</li>
+				<li class="category"><%= field.fieldName %></li>
+			</ul>
+	
+		<% end %>
+	
+	</div>
+
+    <!--%= render 'form' %-->
+
   <div class="field">
-  	  <%= f.text_field :date, :value => @tl %>
+  	  <%= f.text_field :date, :value => Time.now.strftime("%Y-%m-%d") %>
   </div>
 
   <% @fields.each_with_index do |field,i| %>
@@ -92,17 +96,22 @@ $(document).ready(function() {
 		  	<%= f.text_field @dbField, :value => @lastDay.field2 %>
 		  	<% end %>
 
-			<% if (i == 3) %> 
+			<% if (i == 2) %> 
 			<%= f.text_field @dbField, :value => @lastDay.field3 %>
 			<% end %>
-			
-			<% if (i == 4) %> 
+
+			<% if (i == 3) %> 
 			<%= f.text_field @dbField, :value => @lastDay.field4 %>
 			<% end %>
 			
-			<% if (i == 5) %> 
+			<% if (i == 4) %> 
 			<%= f.text_field @dbField, :value => @lastDay.field5 %>
 			<% end %>
+			
+			<% if (i == 5) %> 
+			<%= f.text_field @dbField, :value => @lastDay.field6 %>
+			<% end %>
+					
       </div>
   <% end %>
 

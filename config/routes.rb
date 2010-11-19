@@ -1,6 +1,6 @@
 Biolars::Application.routes.draw do
 
-  root :to => "days#index"
+  root :to => "days#new"
 
   resources :fields
   resources :days

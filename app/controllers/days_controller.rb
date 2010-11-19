@@ -20,12 +20,10 @@ class DaysController < ApplicationController
   end
 
   def new
-
-    @tl = Time.now.strftime("%Y-%m-%d")
-   
+    #doubled atm
     @fields = Field.all
     
-    @lastEntry = Day.last
+    @lastEntry = Day.last                  # fails if there is none
     @lastDay = Day.find(@lastEntry.id)
     
     @day = Day.new
@@ -45,7 +43,7 @@ class DaysController < ApplicationController
 
     respond_to do |format|
       if @day.save
-        format.html { redirect_to(@day, :notice => 'Day was successfully created.') }
+        format.html { redirect_to(:root, :notice => 'Day was successfully created.') }
         format.xml  { render :xml => @day, :status => :created, :location => @day }
       else
         format.html { render :action => "new" }

@@ -13,6 +13,7 @@
 	<div id="page">
 		<div id="header"><h1><a href="/">BioLars</a></h1><div id="headerDate"><%=Time.now.strftime("%Y-%m-%d")%></div></div>
 		<div id="body">
+			<%= flash[:notice] %>
 			<div id="stats"></div>
 			<%= yield %>
 		</div>
