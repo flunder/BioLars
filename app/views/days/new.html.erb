@@ -1,0 +1,115 @@
+<h2>TODAY</h2>
+
+<script>
+$(document).ready(function() {
+	
+	$('.rater .dot').click(function(){
+		
+		// values
+		var id = $(this).html()                                       // id = 0 / +1 / +2 etc
+		var updatesID = $(this).parent('ul').attr('updates');         // day_field1
+		var startValue = $('#' + updatesID).attr('value');            // previous value from field
+				
+		// select function
+		$(this).siblings('.dot').removeClass('zero')
+		$(this).addClass('zero')
+		
+		// update chosen
+		var chosenField = $(this).siblings('.chosen')
+		chosenField.html(id)
+		
+		if( $(this).hasClass('neg') ) { 
+			chosenField.addClass('negative');
+		} else { 
+			chosenField.addClass('positive');	
+		}
+
+		// calculate new values
+		var newValue = parseInt(startValue);
+		if ( id.indexOf('+') == 0  ) { 
+			id = id.replace('+', "");	
+			newValue = newValue + parseInt(id);			
+		} else if ( id.indexOf('-') == 0 ) {
+			id = id.replace('-', "");
+			newValue = newValue - parseInt(id);
+		} else {}
+
+		// update form field
+		$( '#' + updatesID ).attr('value', newValue );
+		
+	})
+});
+
+</script>	
+
+<div class="options">
+	<ul class="rater" updates="day_field1">
+		<li class="dot neg">-3</li>
+		<li class="dot neg">-2</li>
+		<li class="dot neg">-1</li>
+		<li class="dot zero">0</li>
+		<li class="dot pos">+1</li>
+		<li class="dot pos">+2</li>
+		<li class="dot pos">+3</li>
+		<li class="chosen">-</li>
+		<li class="category">MOOD</li>
+	</ul>
+	
+	<ul class="rater" updates="day_field2">
+		<li class="dot neg">-3</li>
+		<li class="dot neg">-2</li>
+		<li class="dot neg">-1</li>
+		<li class="dot zero">0</li>
+		<li class="dot pos">+1</li>
+		<li class="dot pos">+2</li>
+		<li class="dot pos">+3</li>
+		<li class="chosen">-</li>
+		<li class="category">HAPPYNESS</li>
+	</ul>	
+</div>
+
+<br/><br/><br/><br/><br/><br/><br/>
+<!--%= render 'form' %-->
+
+<%= form_for @day do |f| %>
+
+  <div class="field">
+  	  <%= f.text_field :date, :value => @tl %>
+  </div>
+
+  <% @fields.each_with_index do |field,i| %>
+      <% @dbField = "field#{i+1}" %>
+
+      <div class="field">
+	
+            <%= f.label @fields[i].fieldName %><br />
+
+		  	<% if (i == 0) %> 
+		  	<%= f.text_field @dbField, :value => @lastDay.field1 %>
+		  	<% end %>
+
+		  	<% if (i == 1) %> 
+		  	<%= f.text_field @dbField, :value => @lastDay.field2 %>
+		  	<% end %>
+
+			<% if (i == 3) %> 
+			<%= f.text_field @dbField, :value => @lastDay.field3 %>
+			<% end %>
+			
+			<% if (i == 4) %> 
+			<%= f.text_field @dbField, :value => @lastDay.field4 %>
+			<% end %>
+			
+			<% if (i == 5) %> 
+			<%= f.text_field @dbField, :value => @lastDay.field5 %>
+			<% end %>
+      </div>
+  <% end %>
+
+  <div class="actions">
+	  <%= image_submit_tag 'submit.png', :class => 'image-submit' %>
+  </div>
+<% end %>
+
+
+

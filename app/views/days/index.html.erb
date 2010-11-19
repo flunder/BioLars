@@ -1,0 +1,26 @@
+<h2>HISTORIC</h2>
+
+<table>
+  <tr>
+	<% @fields.each do |field| %>
+		<th><%= field.fieldName %></th>
+	<% end %>
+  </tr>
+
+<% @days.each do |day| %>
+  <tr>
+    <td><%= day.field1 %></td>
+    <td><%= day.field2 %></td>
+    <td><%= day.field3 %></td>
+    <td><%= day.field4 %></td>
+    <td><%= day.field5 %></td>
+    <td><%= link_to 'Show', day %></td>
+    <td><%= link_to 'Edit', edit_day_path(day) %></td>
+    <td><%= link_to 'Destroy', day, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Day', new_day_path, :class => 'button' %>
