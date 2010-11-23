@@ -1,5 +1,3 @@
-#main { background: white; float: left; width: 600px; padding: 0px 10px 10px 10px; margin-top: 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; } 
-
 a:active, a:focus { outline: 0 }
 a {color:#7bf1ff;text-decoration:none;}
 a:visited {color:#7bf1ff;}
@@ -13,6 +11,10 @@ body{ background:#222;color:#222;font-family:"Helvetica Neue",Helvetica,Arial,Sa
 #page #body { clear: both; float: left; width: 600px;background: white; padding: 4px 10px 10px 10px;-moz-border-radius: 0px 0px 10px 10px; }
 #page #body #stats { width: 100%; height: 150px; background: url('../images/graphpaper.png') repeat; margin-top: 5px;}
 #page #main h2 { color: #f2ecec; background: #212121; padding: 7px 12px; font-weight: normal; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; }
+#page #main { background: white; float: left; width: 600px; padding: 0px 10px 10px 10px; margin-top: 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; } 
+#page #mainFollowup { background: white; float: left; width: 600px; padding: 10px 10px 10px 10px; margin-top: 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; } 
+
+
 
 #leftSide { width: 200px; float: left; }
 #rightSide { width: 300px; float: right; }
@@ -40,16 +42,9 @@ form#new_day .actions { clear: both; margin-left: 148px; }
 .options #optionsDate { font-size:1.4em; color: #bbb;  min-width: 235px; clear: both; cursor: pointer; float: left; width:auto;margin:0; padding:0;padding: 8px 20px; background: #fbfbfb; margin-bottom: 5px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; } 
 #error_explanation { float: left; clear: both; }
 
-#filterBar {
--moz-border-radius:5px 5px 0 0;
-background-color:#F4F4F4;
-height:50px;
-width:610px;
-position: relative;
-left: -10px;
-}
-
-
-
-
+#filterBar{-moz-border-radius:5px 5px 0 0;background-color:#F4F4F4;height:50px;width:610px;position:relative;left:-10px;}
 #myBar { position: relative; left: -24px; top:-25px;}
+
+
+#historical .row { clear: both; border-bottom: 1px dotted #ccc; width: 300px;}
+#historical .row span { width: 40px; padding: 5px; float: left; ; }

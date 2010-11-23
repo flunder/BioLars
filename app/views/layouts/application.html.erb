@@ -16,31 +16,15 @@
 		<div id="body">
 			<%= flash[:notice] %>
 			<div id="stats">
-				
-  				<canvas id="myBar" width="650" height="200">[No canvas support]</canvas>				
-				<script>
-			        window.onload = function () {
-				
-						var data = [10,4,17,50,25,19,20,25,30,29,30,29];
-		        
-			            var line = new RGraph.Line('myBar', data);
-			            line.Set('chart.colors', ['#d92d21']);
-						line.Set('chart.linewidth', 2);
-					//    line.Set('chart.background.grid.color', 'rgba(0,0,0,0)');
-						line.Set('chart.ylabels', false);
-					 // line.Set('chart.noaxes', true);
-			   	
-						
-			
-			            line.Draw();
-			        }
-			    </script>	
-				
+				<%= yield :graph %>
 			</div>
 		</div>
 		<div id="main">
-			<%= yield %>
-		<div>
+			<%= yield :main %>
+		</div>
+		<div id="mainFollowup">
+			<%= yield :follow %>
+		</div>			
 	</div>
 
 </body>
