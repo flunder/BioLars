@@ -6,8 +6,8 @@
 	<% @field_data4 = [] %>
 	<% @field_data5 = [] %>		
 
-	<% @days = Day.all %>
-	<% @days.each do |day| %>
+	<% @daysToShow = Day.last(10) %>
+	<% @daysToShow.each do |day,i| %>
 		<% @field_data1.push(day.field1, ',') %>
 		<% @field_data2.push(day.field2, ',') %>
 		<% @field_data3.push(day.field3, ',') %>
@@ -19,42 +19,48 @@
 	<script>
         window.onload = function () {
     
-            var line1 = new RGraph.Line('myBar',  [<%=@field_data1%>]);
-            line1.Set('chart.colors', ['#d92d21']);
+            var line1 = new RGraph.Line('myBar',  [<%=@field_data1%>], [<%=@field_data2%>], [<%=@field_data3%>]);
+            line1.Set('chart.colors', ['red', 'blue', 'green', 'magenta', 'brown']);
+			line1.Set('chart.tickmarks', ['circle','circle','circle','circle','circle']);
 			line1.Set('chart.linewidth', 2);
 			line1.Set('chart.ylabels', false);
 			line1.Set('chart.background.grid.color', 'rgba(0,0,0,0)');
+			
             line1.Draw();
 
-			var line2 = new RGraph.Line('myBar',  [<%=@field_data2%>]);
-			line2.Set('chart.colors', ['blue']);
-			line2.Set('chart.linewidth', 2);
-			line2.Set('chart.ylabels', false);
-			line2.Set('chart.background.grid.color', 'rgba(0,0,0,0)');
-			line2.Draw();
-
-			var line3 = new RGraph.Line('myBar',  [<%=@field_data3%>]);
-			line3.Set('chart.colors', ['green']);
-			line3.Set('chart.linewidth', 2);
-			line3.Set('chart.ylabels', false);
-			line3.Set('chart.background.grid.color', 'rgba(0,0,0,0)');
-			line3.Draw();
-			
-			var line4 = new RGraph.Line('myBar',  [<%=@field_data4%>]);
-			line4.Set('chart.colors', ['green']);
-			line4.Set('chart.linewidth', 2);
-			line4.Set('chart.ylabels', false);
-			line4.Set('chart.background.grid.color', 'rgba(0,0,0,0)');
-			line4.Draw();
-			
-			var line5 = new RGraph.Line('myBar',  [<%=@field_data5%>]);
-			line5.Set('chart.colors', ['green']);
-			line5.Set('chart.linewidth', 2);
-			line5.Set('chart.ylabels', false);
-			line5.Set('chart.background.grid.color', 'rgba(0,0,0,0)');
-			line5.Draw();						
         }
     </script>
+
+<!-- These are the tooltips for the first graph. -->
+<div style="display: none">
+    <div id="tooltip_china"><b>China</b><br /><a href="http://www.google.com/#q=china">A populous country</a></div>
+    <div id="tooltip_la"><b>Los Angeles</b><br />Home of sexy time!</div>
+    <div id="tooltip_plymouth"><b>Plymouth</b><br />Plenty of surfers dude</div>
+
+    <div id="tooltip_meadowhall"><b>Meadowhall</b><br />Shopping heaven (or hell...) here</div>
+    <div id="tooltip_sydney"><b>Sydney</b><br />Home of kangeroos</div>
+    <div id="tooltip_toronto"><b>Toronto</b><br />Brrrr, chilly</div>
+    <div id="tooltip_france"><b>France</b><br />Ever had frogs legs?</div>
+    <div id="tooltip_norway"><b>Norway</b><br />Skiing here</div>
+
+    <div id="tooltip_sweden"><b>Sweden</b><br />Skiing here too</div>
+    <div id="tooltip_spain"><b>Spain</b><br />Hola!</div>
+    <div id="tooltip_deli"><b>Deli</b><br />Hot and humid here</div>
+    <div id="tooltip_congo"><b>Congo</b><br />Not exactly a holiday resort</div>
+    <div id="tooltip_plymouth"><b>Plymouth</b><br />Plenty of surfers here</div>
+
+    <div id="tooltip_brazil"><b>Brazil</b><br />Fooseball</div>
+    <div id="tooltip_california"><b>Califonia</b><br />"I'll be back..." And he was</div>
+    <div id="tooltip_newyork"><b>New York</b><br />Home of the Friends comedy show</div>
+    <div id="tooltip_paris"><b>Paris</b><br />Ever eaten frogs legs?</div>
+    <div id="tooltip_uk"><b>UK</b><br />Not a place for getting sun-tans</div>
+
+    <div id="tooltip_antartica"><b>Antartica</b><br />Surprisingly, incorporates the driest place in the world</div>
+    <div id="tooltip_sahara"><b>Sahara</b><br />A questionable film, and a rather hot place</div>
+    <div id="tooltip_zagreb"><b>Zagreb</b><br />Anyone know where this is...?</div>
+</div>
+
+
 <% end %>
 
 <% content_for :main do %>

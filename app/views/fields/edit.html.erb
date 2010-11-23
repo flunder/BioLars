@@ -1,6 +1,8 @@
-<h1>Editing field</h1>
+<% content_for :main do %>
+	<h1>Editing field</h1>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @field, :class => 'button' %>
-<%= link_to 'Back', fields_path, :class => 'button' %>
+	<%= link_to 'Show', @field, :class => 'button' %>
+	<%= link_to 'Back', fields_path, :class => 'button' %>
+<% end %>
