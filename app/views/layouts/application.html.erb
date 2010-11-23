@@ -4,7 +4,8 @@
 <head>
   <title>Biolars</title>
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag 'jquery' %>
+  <%= javascript_include_tag 'jquery', 'rgraph/RGraph.common.core.js', 'rgraph/RGraph.line.js'%>
+
   <%= csrf_meta_tag %>
 </head>
 
@@ -14,7 +15,28 @@
 		<div id="header"><h1><a href="/">BioLars</a></h1><div id="headerDate"><%=Time.now.strftime("%Y-%m-%d")%></div></div>
 		<div id="body">
 			<%= flash[:notice] %>
-			<div id="stats"></div>
+			<div id="stats">
+				
+  				<canvas id="myBar" width="650" height="200">[No canvas support]</canvas>				
+				<script>
+			        window.onload = function () {
+				
+						var data = [10,4,17,50,25,19,20,25,30,29,30,29];
+		        
+			            var line = new RGraph.Line('myBar', data);
+			            line.Set('chart.colors', ['#d92d21']);
+						line.Set('chart.linewidth', 2);
+					//    line.Set('chart.background.grid.color', 'rgba(0,0,0,0)');
+						line.Set('chart.ylabels', false);
+					 // line.Set('chart.noaxes', true);
+			   	
+						
+			
+			            line.Draw();
+			        }
+			    </script>	
+				
+			</div>
 		</div>
 		<div id="main">
 			<%= yield %>
