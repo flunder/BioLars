@@ -9,7 +9,9 @@ body{ background:#222;color:#222;font-family:"Helvetica Neue",Helvetica,Arial,Sa
 #page #header h1 { color: #7bf1ff; margin: 0px; font-size: 3em; padding: 7px 10px 3px 10px; float: left;}
 #page #header #headerDate {float: right; color: white; font-size: 12px; position:relative; top: 24px; right: 10px;}
 #page #body { clear: both; float: left; width: 600px;background: white; padding: 4px 10px 10px 10px;-moz-border-radius: 0px 0px 10px 10px; }
-#page #body #stats { width: 100%; height: 150px; background: url('../images/graphpaper.png') repeat; margin-top: 5px;}
+#page #body #stats { width: 100%; height: 150px; margin-top: 5px;}
+#page #body #statsInner { background:url("../images/graphpaper.png") repeat scroll 0 0 transparent;height:150px;}
+
 #page #main h2 { color: #f2ecec; background: #212121; padding: 7px 12px; font-weight: normal; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; }
 #page #main { background: white; float: left; width: 600px; padding: 0px 10px 10px 10px; margin-top: 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; } 
 #page #mainFollowup { background: white; float: left; width: 600px; padding: 10px 10px 10px 10px; margin-top: 6px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; } 
@@ -24,7 +26,7 @@ body{ background:#222;color:#222;font-family:"Helvetica Neue",Helvetica,Arial,Sa
 .button {color: #333 !important; background: #e5e5e5; padding: 7px 20px; font-weight: bold; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; }    
 table { margin: 0px 10px 10px 10px;}
 
-.options { float:right; clear:both;}
+.options { float:left; clear:both;}
 .options ul.rater { min-width: 235px; clear: both; cursor: pointer; float: left; width:auto;margin:0; padding:0; padding: 8px 20px; background: #fbfbfb; margin-bottom: 5px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; } 
 .options ul.rater, ul.rater li { list-style-type: none; cursor: pointer; }
 .options ul.rater li.dot { float: left; background: url('../images/dot_grey.png') no-repeat; height: 12px; width: 13px; margin-right: 5px; text-indent: -7777px;}
@@ -36,8 +38,8 @@ table { margin: 0px 10px 10px 10px;}
 .options ul.rater li.chosen.negative{color: #f41414 !important;}
 .options ul.rater li.category { color: #ccc; float: left; margin-left: 12px; font-size: 1.2em; font-weight: bold; margin-top: 1px; text-transform: uppercase;}
 
-/* form#new_day .field{display:none;} */
-form#new_day .actions { clear: both; margin-left: 148px; }
+form#new_day .field{display:none;}
+form#new_day .actions { clear:both; float:right; margin-left:148px;}
 
 .options #optionsDate { font-size:1.4em; color: #bbb;  min-width: 235px; clear: both; cursor: pointer; float: left; width:auto;margin:0; padding:0;padding: 8px 20px; background: #fbfbfb; margin-bottom: 5px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; } 
 #error_explanation { float: left; clear: both; }
@@ -56,6 +58,7 @@ form#new_day .actions { clear: both; margin-left: 148px; }
 #historical .row span.comment { width: 60px; color: #555;text-align: left;}
 
 .unselectable { -moz-user-select: none; -khtml-user-select: none; user-select: none; cursor: pointer; }
-.commentBox { min-width: 200px; clear: both; float: left; width:243px;margin:0 0 0 17px; padding:0; padding: 8px 15px; background: #fbfbfb; margin-bottom: 5px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; }
-.commentBox textarea { width: 232px; margin: 5px 0px; border: 1px dotted #ccc; height: 50px; padding: 5px; color: #555; font-size: 12px;}
+.commentBox { min-width: 200px; float: right; width:243px;margin:0 0 0 17px; padding:0; padding: 8px 15px; background: #fbfbfb; margin-bottom: 5px; -moz-border-radius: 20px; -webkit-border-radius: 20px; -khtml-border-radius: 20px; border-radius: 20px; }
+.commentBox textarea { width: 232px; margin: 5px 0px; border: 1px dotted #ccc; height: 127px; padding: 5px; color: #555; font-size: 12px;}
+.todayDate { float: right; font-size: 12px; margin-top: 1px; color: #999;}
 

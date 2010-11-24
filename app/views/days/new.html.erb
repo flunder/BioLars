@@ -1,6 +1,5 @@
 <% content_for :graph do %>
 
-
 	<% @daysToShow = Day.last(params[:days] ? params[:days].to_i : 20) %>
 
   	<% @field_data1, @field_data2, @field_data3, @field_data4, @field_data5 = [],[],[],[],[] %>
@@ -10,7 +9,10 @@
 	<% @field_data4 = @daysToShow.map{ |day| day.field4 << ',' }.to_s.chop %>
 	<% @field_data5 = @daysToShow.map{ |day| day.field5 << ',' }.to_s.chop %>
 
-	<canvas id="myBar" width="650" height="200">[No canvas support]</canvas>				
+	<div id="statsInner">
+		<canvas id="myBar" width="650" height="200">[No canvas support]</canvas>				
+	</div>
+	
 	<script>
         window.onload = function () {
             var lines = new RGraph.Line('myBar',  [<%=@field_data1%>], [<%=@field_data2%>], [<%=@field_data3%>], [<%=@field_data4%>], [<%=@field_data5%>]);
@@ -22,19 +24,14 @@
             lines.Draw();
         }
     </script>
-
+    <div>xx</div>
 <% end %>
 
 <% content_for :main do %>
 
-	<div id="leftSide">
-		<h2>SOMETHING</h2>
-		<img src="images/squid.png" alt="squid!">
-	</div>
+	<div id="fullWidth">
 
-	<div id="rightSide">
-
-		<h2>TODAY <%= Time.now.strftime("%Y-%m-%d") %></h2>
+		<h2>TODAY <span class="todayDate"><%= Time.now.strftime("%Y-%m-%d") %></span></h2>
 
 		<script>
 		$(document).ready(function() {
@@ -125,27 +122,27 @@
 		            <%= f.label @fields[i].fieldName %><br />
 
 				  	<% if (i == 0) %> 
-				  	<%= f.text_field @dbField, :value => @lastDay.field1, :startvalue => @lastDay.field1 %>
+				  		<%= f.text_field @dbField, :value => @lastDay.field1, :startvalue => @lastDay.field1 %>
 				  	<% end %>
 
 				  	<% if (i == 1) %> 
-				  	<%= f.text_field @dbField, :value => @lastDay.field2, :startvalue => @lastDay.field2 %>
+				  		<%= f.text_field @dbField, :value => @lastDay.field2, :startvalue => @lastDay.field2 %>
 				  	<% end %>
 
 					<% if (i == 2) %> 
-					<%= f.text_field @dbField, :value => @lastDay.field3, :startvalue => @lastDay.field3 %>
+						<%= f.text_field @dbField, :value => @lastDay.field3, :startvalue => @lastDay.field3 %>
 					<% end %>
 
 					<% if (i == 3) %> 
-					<%= f.text_field @dbField, :value => @lastDay.field4, :startvalue => @lastDay.field4 %>
+						<%= f.text_field @dbField, :value => @lastDay.field4, :startvalue => @lastDay.field4 %>
 					<% end %>
 			
 					<% if (i == 4) %> 
-					<%= f.text_field @dbField, :value => @lastDay.field5, :startvalue => @lastDay.field5 %>
+						<%= f.text_field @dbField, :value => @lastDay.field5, :startvalue => @lastDay.field5 %>
 					<% end %>
 			
 					<% if (i == 5) %> 
-					<%= f.text_field @dbField, :value => @lastDay.field6, :startvalue => @lastDay.field6 %>
+						<%= f.text_field @dbField, :value => @lastDay.field6, :startvalue => @lastDay.field6 %>
 					<% end %>
 					
 		      </div>

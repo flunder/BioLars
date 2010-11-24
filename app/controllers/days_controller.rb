@@ -21,11 +21,6 @@ class DaysController < ApplicationController
   end
 
   def new
-    
-    # Prepare data for graph
-    
-  	@field_data1, @field_data2, @field_data3, @field_data4, @field_data5 = [],[],[],[],[]
-  	@daysToShow = Day.last(10)    
         
     #doubled atm
     @fields = Field.all
