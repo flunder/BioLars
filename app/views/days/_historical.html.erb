@@ -1,0 +1,29 @@
+<div class="jqueryToggleBtn">HISTORICAL</div>
+
+<div id="historical" class="jqueryToggleContent" style="display:none">
+	
+	<% @days = Day.all %>
+	<% @fields = Field.all %>
+	
+	<div class="row">
+		<span class="id">id</span>
+		<span class="date">date</span>
+		<% @fields.each_with_index do |field,i| %>
+		    	<span><%= field.fieldName %></span>
+		<% end %>
+	</div>	
+	
+	<% @days.each do |day| %>
+		<div class="row">
+   		    <span class="id"><%= day.id %></span>
+  			<span class="date"><%= day.date %></span>
+			<span><%= day.field1 %></span>
+		    <span><%= day.field2 %></span>
+		    <span><%= day.field3 %></span>
+		    <span><%= day.field4 %></span>
+		    <span><%= day.field5 %></span>
+			<span class="comment"><%= day.comment %></span>
+		</div>
+	<% end %>
+	
+</div>

@@ -1,0 +1,26 @@
+
+<% @daysToShow = Day.last(params[:days] ? params[:days].to_i : 20) %>
+
+<% @field_data1, @field_data2, @field_data3, @field_data4, @field_data5 = [],[],[],[],[] %>
+<% @field_data1 = @daysToShow.map{ |day| day.field1 << ',' }.to_s.chop %>
+<% @field_data2 = @daysToShow.map{ |day| day.field2 << ',' }.to_s.chop %>
+<% @field_data3 = @daysToShow.map{ |day| day.field3 << ',' }.to_s.chop %>
+<% @field_data4 = @daysToShow.map{ |day| day.field4 << ',' }.to_s.chop %>
+<% @field_data5 = @daysToShow.map{ |day| day.field5 << ',' }.to_s.chop %>
+
+<div id="statsInner">
+	<canvas id="myBar" width="650" height="200">[No canvas support]</canvas>				
+</div>
+
+<script>
+    window.onload = function () {
+        var lines = new RGraph.Line('myBar',  [<%=@field_data1%>], [<%=@field_data2%>], [<%=@field_data3%>], [<%=@field_data4%>], [<%=@field_data5%>]);
+        lines.Set('chart.colors', ['red', 'blue', 'green', 'magenta', 'brown']);
+		lines.Set('chart.tickmarks', ['circle','circle','circle','circle','circle']);
+		lines.Set('chart.linewidth', 2);
+		lines.Set('chart.ylabels', false);
+		lines.Set('chart.background.grid.color', 'rgba(0,0,0,0)');
+        lines.Draw();
+    }
+</script>
+<div>xx</div>
