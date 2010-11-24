@@ -46,5 +46,11 @@ form#new_day .actions { clear: both; margin-left: 148px; }
 #myBar { position: relative; left: -24px; top:-25px;}
 
 
-#historical .row { clear: both; border-bottom: 1px dotted #ccc; width: 300px;}
-#historical .row span { width: 40px; padding: 5px; float: left; ; }
+
+
+
+#historical .row { clear: both; border-bottom: 1px dotted #ccc; width: 600px;}
+#historical .row span { width: 40px; padding: 5px; float: left; text-align: center; }
+#historical .row span.id { width: 20px; font-weight: bold; text-align: left;}
+#historical .row span.date { width: 60px; color: #555;text-align: left;}
+#historical .row span.comment { width: 60px; color: #555;text-align: left;}

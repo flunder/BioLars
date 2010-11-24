@@ -11,48 +11,15 @@
 	<canvas id="myBar" width="650" height="200">[No canvas support]</canvas>				
 	<script>
         window.onload = function () {
-    
-            var line1 = new RGraph.Line('myBar',  [<%=@field_data1%>], [<%=@field_data2%>], [<%=@field_data3%>]);
-            line1.Set('chart.colors', ['red', 'blue', 'green', 'magenta', 'brown']);
-			line1.Set('chart.tickmarks', ['circle','circle','circle','circle','circle']);
-			line1.Set('chart.linewidth', 2);
-			line1.Set('chart.ylabels', false);
-			line1.Set('chart.background.grid.color', 'rgba(0,0,0,0)');
-			
-            line1.Draw();
-
+            var lines = new RGraph.Line('myBar',  [<%=@field_data1%>], [<%=@field_data2%>], [<%=@field_data3%>], [<%=@field_data4%>], [<%=@field_data5%>]);
+            lines.Set('chart.colors', ['red', 'blue', 'green', 'magenta', 'brown']);
+			lines.Set('chart.tickmarks', ['circle','circle','circle','circle','circle']);
+			lines.Set('chart.linewidth', 2);
+			lines.Set('chart.ylabels', false);
+			lines.Set('chart.background.grid.color', 'rgba(0,0,0,0)');
+            lines.Draw();
         }
     </script>
-
-<!-- These are the tooltips for the first graph. -->
-<div style="display: none">
-    <div id="tooltip_china"><b>China</b><br /><a href="http://www.google.com/#q=china">A populous country</a></div>
-    <div id="tooltip_la"><b>Los Angeles</b><br />Home of sexy time!</div>
-    <div id="tooltip_plymouth"><b>Plymouth</b><br />Plenty of surfers dude</div>
-
-    <div id="tooltip_meadowhall"><b>Meadowhall</b><br />Shopping heaven (or hell...) here</div>
-    <div id="tooltip_sydney"><b>Sydney</b><br />Home of kangeroos</div>
-    <div id="tooltip_toronto"><b>Toronto</b><br />Brrrr, chilly</div>
-    <div id="tooltip_france"><b>France</b><br />Ever had frogs legs?</div>
-    <div id="tooltip_norway"><b>Norway</b><br />Skiing here</div>
-
-    <div id="tooltip_sweden"><b>Sweden</b><br />Skiing here too</div>
-    <div id="tooltip_spain"><b>Spain</b><br />Hola!</div>
-    <div id="tooltip_deli"><b>Deli</b><br />Hot and humid here</div>
-    <div id="tooltip_congo"><b>Congo</b><br />Not exactly a holiday resort</div>
-    <div id="tooltip_plymouth"><b>Plymouth</b><br />Plenty of surfers here</div>
-
-    <div id="tooltip_brazil"><b>Brazil</b><br />Fooseball</div>
-    <div id="tooltip_california"><b>Califonia</b><br />"I'll be back..." And he was</div>
-    <div id="tooltip_newyork"><b>New York</b><br />Home of the Friends comedy show</div>
-    <div id="tooltip_paris"><b>Paris</b><br />Ever eaten frogs legs?</div>
-    <div id="tooltip_uk"><b>UK</b><br />Not a place for getting sun-tans</div>
-
-    <div id="tooltip_antartica"><b>Antartica</b><br />Surprisingly, incorporates the driest place in the world</div>
-    <div id="tooltip_sahara"><b>Sahara</b><br />A questionable film, and a rather hot place</div>
-    <div id="tooltip_zagreb"><b>Zagreb</b><br />Anyone know where this is...?</div>
-</div>
-
 
 <% end %>
 
@@ -197,7 +164,8 @@
 		<% @days = Day.all %>
 		
 		<div class="row">
-			<span>id</span>
+			<span class="id">id</span>
+			<span class="date">date</span>
 			<% @fields.each_with_index do |field,i| %>
   		    	<span><%= field.fieldName %></span>
 			<% end %>
@@ -205,13 +173,14 @@
 		
 		<% @days.each do |day| %>
 			<div class="row">
-	   		    <span><%= day.id %></span>
+	   		    <span class="id"><%= day.id %></span>
+	  			<span class="date"><%= day.date %></span>
 				<span><%= day.field1 %></span>
 			    <span><%= day.field2 %></span>
 			    <span><%= day.field3 %></span>
 			    <span><%= day.field4 %></span>
 			    <span><%= day.field5 %></span>
-				<span><%= day.comment %></span>
+				<span class="comment"><%= day.comment %></span>
 			</div>
 		<% end %>
 	</div>	
