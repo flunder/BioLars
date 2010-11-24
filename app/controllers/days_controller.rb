@@ -1,36 +1,32 @@
 class DaysController < ApplicationController
 
+  respond_to :html
+  before_filter :check_if_new
+
+  def testing
+    @days = Day.all 
+  end
+
   def index
     @days = Day.all
     @fields = Field.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @days }
-    end
+    respond_with(@days)
   end
 
   def show
     @day = Day.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @day }
-    end
+    respond_with(@days)
   end
 
   def new
     
     # Prepare data for graph
     
-  	@field_data1 = []
-  	@field_data2 = []
-  	@field_data3 = []
-  	@field_data4 = []
-  	@field_data5 = []
+  	@field_data1, @field_data2, @field_data3, @field_data4, @field_data5 = [],[],[],[],[]
   	@daysToShow = Day.last(10)    
-    
-    
+        
     #doubled atm
     @fields = Field.all
     
@@ -39,10 +35,7 @@ class DaysController < ApplicationController
     
     @day = Day.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @day }
-    end
+    respond_with(@days)
   end
 
   def edit
@@ -52,38 +45,39 @@ class DaysController < ApplicationController
   def create
     @day = Day.new(params[:day])
 
-    respond_to do |format|
-      if @day.save
-        format.html { redirect_to(:root, :notice => 'Day was successfully created.') }
-        format.xml  { render :xml => @day, :status => :created, :location => @day }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @day.errors, :status => :unprocessable_entity }
-      end
+    if @day.save
+      flash[:notice] = "Day was successfully created."
     end
+    
+    respond_with(@day)
+    # respond_with(@movie) can take a location like this:
+    # respond_with(@movie, location => movies_url)
+    # railscast 224
+
   end
 
   def update
     @day = Day.find(params[:id])
 
-    respond_to do |format|
-      if @day.update_attributes(params[:day])
-        format.html { redirect_to(@day, :notice => 'Day was successfully updated.') }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @day.errors, :status => :unprocessable_entity }
-      end
+    if @day.update_attributes(params[:movie])
+      flash[:notice] = "Day was successfully updated."
     end
+    
+    respond_with(@day)
   end
 
   def destroy
     @day = Day.find(params[:id])
     @day.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(days_url) }
-      format.xml  { head :ok }
-    end
+    
+    respond_with(@day)
   end
+  
+  def check_if_new
+    unless Day.last
+      Day.create(:date => Time.now.strftime("%Y-%m-%d"), :field1 => '63', :field2 => '63', :field3 => '63', :field4 => '63', :field5 => '63', :field6 => '63', :comment => 'Welcome!')
+      redirect_to fields_path, :notice => "Please setup your fields first!"
+    end
+  end  
+  
 end

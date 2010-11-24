@@ -1,19 +1,12 @@
 <% content_for :graph do %>
 
-	<% @field_data1 = [] %>
-	<% @field_data2 = [] %>
-	<% @field_data3 = [] %>
-	<% @field_data4 = [] %>
-	<% @field_data5 = [] %>		
-
 	<% @daysToShow = Day.last(10) %>
-	<% @daysToShow.each do |day,i| %>
-		<% @field_data1.push(day.field1, ',') %>
-		<% @field_data2.push(day.field2, ',') %>
-		<% @field_data3.push(day.field3, ',') %>
-		<% @field_data4.push(day.field4, ',') %>
-		<% @field_data5.push(day.field5, ',') %>
-	<% end %>
+  	<% @field_data1, @field_data2, @field_data3, @field_data4, @field_data5 = [],[],[],[],[] %>
+	<% @field_data1 = @daysToShow.map{ |day| day.field1 << ',' }.to_s.chop %>
+	<% @field_data2 = @daysToShow.map{ |day| day.field2 << ',' }.to_s.chop %>
+	<% @field_data3 = @daysToShow.map{ |day| day.field3 << ',' }.to_s.chop %>
+	<% @field_data4 = @daysToShow.map{ |day| day.field4 << ',' }.to_s.chop %>
+	<% @field_data5 = @daysToShow.map{ |day| day.field5 << ',' }.to_s.chop %>
 
 	<canvas id="myBar" width="650" height="200">[No canvas support]</canvas>				
 	<script>

@@ -4,7 +4,8 @@ Biolars::Application.routes.draw do
 
   resources :fields
   resources :days
-
+  
+  match 'testing' => 'days#testing'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

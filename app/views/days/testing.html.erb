@@ -1,0 +1,7 @@
+<% content_for :main do %>
+
+	<%= @days.map{ |day| day.field1 << ',' }.to_s.chop %>
+
+
+	
+<% end %>	

@@ -1,15 +1,17 @@
-<p id="notice"><%= notice %></p>
+<% content_for :main do %>
+	<p id="notice"><%= notice %></p>
 
-<p>
-  <b>Field1:</b>
-  <%= @day.field1 %>
-</p>
+	<p>
+	  <b>Field1:</b>
+	  <%= @day.field1 %>
+	</p>
 
-<p>
-  <b>Field2:</b>
-  <%= @day.field2 %>
-</p>
+	<p>
+	  <b>Field2:</b>
+	  <%= @day.field2 %>
+	</p>
 
 
-<%= link_to 'Edit', edit_day_path(@day) %> |
-<%= link_to 'Back', days_path %>
+	<%= link_to 'Edit', edit_day_path(@day) %> |
+	<%= link_to 'Back', days_path %>
+<% end %>
